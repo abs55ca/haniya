@@ -1,0 +1,87 @@
+/* “You’ve got mail” — notification, pigeon flight, envelope and letter.
+   Sizes and colours live here; timings live at the top of pigeon-mail.js. */
+.pigeon-mail, .mail-overlay {
+  --mail-edge: 24px;
+  --mail-button-size: 58px;
+  --mail-badge: #d9534f;
+  --mail-pigeon-w: 220px;
+  --mail-envelope-w: 260px;
+  --mail-paper: #f7edd6;
+  --mail-paper-dark: #ead9b6;
+  --mail-paper-edge: #d8c29a;
+  --mail-seal: #b8323a;
+  --mail-seal-dark: #8e1f28;
+  --mail-letter-bg: #fffaf0;
+  --mail-letter-ink: #3a3530;
+  --mail-letter-max: 560px;
+  --mail-dim: #1a26338c;
+}
+
+/* The notification */
+.pigeon-mail { position: fixed; right: var(--mail-edge); bottom: var(--mail-edge); z-index: 900; display: flex; align-items: center; gap: 12px; pointer-events: none; transition: opacity .3s ease, transform .3s var(--ease), visibility 0s; }
+.pigeon-mail.is-away { opacity: 0; transform: translateY(12px) scale(.9); visibility: hidden; transition: opacity .25s ease, transform .3s ease, visibility 0s .3s; }
+.mail-button { pointer-events: auto; position: relative; display: grid; place-items: center; width: var(--mail-button-size); height: var(--mail-button-size); padding: 0; border: 1px solid var(--border); border-radius: 50%; background: var(--surface); color: var(--accent-deep); box-shadow: 0 6px 18px var(--shadow-deep), 0 1px 3px var(--shadow); animation: mail-wiggle 4s ease-in-out 2.2s infinite; }
+.mail-button svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.mail-button:hover, .mail-button:focus-visible, .pigeon-mail.is-read .mail-button { animation: none; }
+.mail-button:hover { transform: translateY(-2px); transition: transform .2s var(--ease); }
+.mail-badge { position: absolute; top: -3px; right: -3px; min-width: 21px; height: 21px; padding-inline: 5px; border-radius: 11px; background: var(--mail-badge); border: 2px solid var(--surface); color: #fff; font: 700 11px/17px var(--body); text-align: center; }
+.mail-tooltip { order: -1; pointer-events: auto; cursor: pointer; padding: 8px 15px; border-radius: 999px; background: var(--ink); color: var(--paper); font-size: 13px; font-weight: 600; white-space: nowrap; box-shadow: 0 4px 14px var(--shadow-deep); opacity: 0; transform: translateX(14px); transition: opacity .45s ease, transform .55s var(--ease); }
+.mail-tooltip.is-visible { opacity: 1; transform: none; }
+@keyframes mail-wiggle {
+  0%, 16%, 100% { transform: rotate(0); }
+  3% { transform: rotate(-13deg); }
+  6% { transform: rotate(11deg); }
+  9% { transform: rotate(-8deg); }
+  12% { transform: rotate(5deg); }
+}
+
+/* The overlay. Everything inside is moved with transform and opacity only. */
+.mail-overlay { position: fixed; inset: 0; z-index: 1000; overflow: hidden; }
+.mail-overlay[hidden] { display: none; }
+.mail-backdrop { position: absolute; inset: 0; background: var(--mail-dim); -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); opacity: 0; }
+
+.mail-carrier { position: absolute; left: 50%; top: 50%; width: var(--mail-pigeon-w); aspect-ratio: 141 / 110; margin-left: calc(var(--mail-pigeon-w) / -2); margin-top: calc(var(--mail-pigeon-w) * -110 / 282); transform: translateX(-200vw); will-change: transform; }
+.mail-pigeon { position: absolute; inset: 0; width: 100%; height: 100%; }
+/* While carried, the full-size envelope is scaled down and hangs from the pigeon’s feet. */
+.mail-carrier .mail-envelope { position: absolute; left: 38%; top: 70%; margin-left: calc(var(--mail-envelope-w) / -2); transform-origin: 50% 0; transform: scale(var(--mail-carry-scale, .25)); }
+
+.mail-envelope-spot { position: absolute; left: 50%; top: 50%; width: 0; height: 0; }
+.mail-envelope-spot .mail-envelope { position: absolute; left: calc(var(--mail-envelope-w) / -2); top: calc(var(--mail-envelope-w) * -.32); }
+
+.mail-envelope { width: var(--mail-envelope-w); aspect-ratio: 25 / 16; perspective: 900px; filter: drop-shadow(0 10px 14px #1a263340); will-change: transform; }
+.mail-envelope > * { position: absolute; }
+.env-back { inset: 0; border-radius: 7px; background: linear-gradient(var(--mail-paper-dark), var(--mail-paper)); box-shadow: inset 0 0 0 1px var(--mail-paper-edge); }
+.env-paper { left: 7%; right: 7%; top: 5%; height: 88%; z-index: 1; border-radius: 3px; background: var(--mail-letter-bg) repeating-linear-gradient(transparent 0 13px, #c9b99a40 13px 14px) 0 18px / 100% 100% no-repeat; box-shadow: 0 0 0 1px #e4d6b8; }
+.env-front { inset: 0; z-index: 2; border-radius: 7px; background: linear-gradient(160deg, #fbf3e1, var(--mail-paper) 60%); clip-path: polygon(0 0, 50% 56%, 100% 0, 100% 100%, 0 100%); box-shadow: inset 0 -1px 0 1px var(--mail-paper-edge); }
+.env-front::before, .env-front::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top right, transparent 49.4%, #d8c29a99 50%, transparent 50.8%); }
+.env-front::after { transform: scaleX(-1); }
+.env-flap { left: 0; right: 0; top: 0; height: 60%; z-index: 3; transform-origin: 50% 0; background: linear-gradient(#efe0bf, #e6d2a9); clip-path: polygon(0 0, 100% 0, 50% 100%); border-radius: 7px 7px 0 0; }
+.env-flap.is-behind { z-index: 0; }
+.env-seal { left: 50%; top: 60%; z-index: 4; width: 21%; aspect-ratio: 1; margin: -10.5% 0 0 -10.5%; border-radius: 50%; display: grid; place-items: center; background: radial-gradient(circle at 35% 30%, #d9545c, var(--mail-seal) 55%, var(--mail-seal-dark)); box-shadow: 0 2px 3px #5a101860, inset 0 0 0 3px #a52831, inset 0 0 0 5px #c9454d55; }
+.env-seal svg { width: 52%; height: 52%; fill: #f6c6c3; opacity: .85; }
+
+/* The open letter */
+.mail-letter-wrap { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 16px; }
+.mail-letter { position: relative; width: min(var(--mail-letter-max), 100%); max-height: 100%; display: flex; flex-direction: column; padding: 46px 44px 30px; border-radius: 6px; color: var(--mail-letter-ink); background-color: var(--mail-letter-bg); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .36 0 0 0 0 .22 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"), radial-gradient(ellipse at 50% 40%, transparent 55%, #e9d9b866); box-shadow: 0 1px 0 #e8dcc2, 0 24px 60px #0f1a2459, 0 0 0 1px #eadfc6; outline: none; will-change: transform; }
+.mail-letter[hidden] { display: none; }
+.mail-letter-body { min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding-right: 4px; }
+.mail-letter-body h1, .mail-letter-body h2, .mail-letter-body h3 { font-family: var(--hand); font-weight: 600; font-size: clamp(34px, 7vw, 44px); line-height: 1.1; letter-spacing: 0; color: var(--mail-seal-dark); margin: 0 0 18px; }
+.mail-letter-body h3 { font-size: 28px; }
+.mail-letter-body p { color: var(--mail-letter-ink); font-size: 16px; line-height: 1.75; margin: 0 0 14px; }
+.mail-letter-body > :last-child { margin-bottom: 0; }
+.mail-letter-body .mail-letter-signoff { margin-top: 22px; }
+.mail-letter-signature { display: block; font-family: var(--hand); font-size: 34px; font-weight: 600; line-height: 1.1; color: var(--mail-seal-dark); transform: rotate(-3deg); transform-origin: left center; margin-top: 4px; }
+.mail-letter-body .mail-letter-ps { margin-top: 22px; padding-top: 14px; border-top: 1px dashed #d8c29a; font-size: 14px; color: #6b5f52; }
+.mail-letter-close-x { position: absolute; top: 10px; right: 10px; width: 44px; height: 44px; border: 0; border-radius: 50%; background: transparent; color: #7b6d5c; font-size: 28px; line-height: 1; }
+.mail-letter-close-x:hover { background: #efe3c9; }
+.mail-letter-close { align-self: center; margin-top: 26px; min-height: 44px; padding: 0 28px; border: 1px solid #d8c29a; border-radius: 999px; background: #f6ecd5; color: var(--mail-letter-ink); font-weight: 600; }
+.mail-letter-close:hover { background: #efe0bf; }
+.mail-letter button:focus-visible { outline: 3px solid var(--mail-seal); outline-offset: 3px; }
+
+html.mail-is-open { overflow: hidden; }
+
+@media (max-width: 600px) {
+  .pigeon-mail, .mail-overlay { --mail-edge: 16px; --mail-button-size: 54px; --mail-pigeon-w: 150px; --mail-envelope-w: 210px; }
+  .mail-tooltip { font-size: 12px; padding: 7px 13px; }
+  .mail-letter { padding: 42px 22px 24px; }
+}

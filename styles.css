@@ -305,7 +305,8 @@ h1 { font-size: clamp(44px, 5.55vw, 72px); line-height: 1.12; letter-spacing: -3
 .comfort-content { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 16px; }
 .comfort-content h3 { font-size: 29px; line-height: 1.4; }.comfort-content h3 span { color: var(--accent-deep); }
 .comfort-content p { font-size: 11px; margin-top: 13px; max-width: 220px; }
-.biryani-art { width: 142px; min-width: 100px; height: 135px; }
+.biryani-art { width: 142px; min-width: 100px; height: 135px; object-fit: contain; }
+@media (max-width: 380px) { .comfort-content .biryani-art { width: 84px; height: 88px; right: -12px; bottom: -18px; }.comfort-card .comfort-content p { padding-right: 60px; } }
 .steam-stroke { fill: none; stroke: var(--accent); stroke-width: 2; stroke-linecap: round; opacity: .65; }.rice-stroke { fill: none; stroke: var(--food-cream); stroke-width: 3; stroke-linecap: round; }.bowl-fill { fill: var(--surface); }.bowl-line { fill: none; stroke: var(--accent); stroke-width: 2; }
 .dessert-card { border: 1px dashed var(--dessert-border); background: var(--dessert-bg); overflow: hidden; }
 .dessert-card .mini-label { font-size: 9px; color: var(--dessert-ink); }

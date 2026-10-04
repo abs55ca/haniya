@@ -28,3 +28,7 @@ The “Her happy place” section includes three landscape photos downloaded as 
 | `place-sunset.jpg` | Keswick, Lake District | [Jonny Gios on Unsplash](https://unsplash.com/photos/a-lake-with-mountains-in-the-background-at-sunset--u91TStInZI) |
 
 These three source pages list the photos under the [Unsplash License](https://unsplash.com/license), which permits downloading and using them in this website. Source credits are kept here for reference.
+
+## The comfort meal
+
+`aloo-biryani.png` is the user-provided transparent illustration of a steaming bowl of aloo biryani. It was trimmed to its edges and resized to 387×420 for the Snack Department card; its transparency is preserved so it sits on the theme-coloured card.

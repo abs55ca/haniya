@@ -12,7 +12,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:wght@400;450;500;550;600;650;700&family=Fraunces:opsz,wght,SOFT,WONK@9..144,400,50,1;9..144,500,50,1;9..144,600,50,1&display=swap" rel="stylesheet">
     <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pigeon-mail.css">
     <script src="script.js" defer></script>
+    <script src="pigeon-mail.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to the good stuff</a>
@@ -124,7 +126,7 @@
         <div class="page-width"><div class="section-heading"><div><p class="eyebrow">03 / FUEL FOR THE MAIN CHARACTER</p><h2 id="snacks-title">The Snack Department<span class="title-dot">.</span></h2><p>A very serious matter. Please give it your full attention.</p></div><span class="handwritten section-aside">sweet person. savoury priorities.</span></div>
           <div class="snack-grid"><article class="snack-card"><svg class="snack-illustration" aria-hidden="true"><use href="#chips"/></svg><h3>Chips</h3><p>Emotional support snack.</p></article><article class="snack-card"><svg class="snack-illustration" aria-hidden="true"><use href="#nachos"/></svg><h3>Nachos</h3><p>Sharing is a negotiable concept.</p></article><article class="snack-card"><svg class="snack-illustration" aria-hidden="true"><use href="#chili"/></svg><h3>Spicy everything</h3><p>A personality trait at this point.</p></article></div>
           <div class="spice-meter"><div class="spice-heading"><label for="spice-range">The spice tolerance test</label><span id="spice-flames" aria-hidden="true">🔥🔥🔥</span></div><p>How much is too much? Asking for everyone except Haniya.</p><input id="spice-range" type="range" min="0" max="4" step="1" value="2" aria-valuetext="Spicy"><div class="spice-labels" aria-hidden="true"><span>Mild<br><small>(disappointing)</small></span><span>Getting there</span><span>Spicy</span><span>She’s not even<br>sweating</span><span>Call the fire<br>department</span></div><output id="spice-output" for="spice-range" aria-live="polite">Spicy. Now we’re talking.</output></div>
-          <div class="meal-grid"><article class="comfort-card"><span class="mini-label">THE COMFORT MEAL</span><div class="comfort-content"><div><h3>Spicy biryani.<br><span>Non-negotiable.</span></h3><p>Some things are simply not up for discussion.</p></div><svg class="biryani-art" viewBox="0 0 160 140" aria-hidden="true"><path class="steam-stroke" d="M56 40C42 26 67 23 56 10M82 36C70 22 93 19 83 7M108 40C98 26 120 24 110 11"/><ellipse class="food-cream" cx="80" cy="76" rx="63" ry="26"/><path class="food-gold" d="M26 72C24 56 38 54 43 50C50 37 60 45 69 39C81 35 84 45 96 40C109 39 111 50 122 49C132 50 139 65 134 74Z"/><g class="rice-stroke"><path d="M41 62L48 59M56 54L62 56M69 47L73 51M79 60L86 56M96 51L102 54M111 63L117 60M59 70L65 67M93 70L100 68M122 70L126 73"/></g><path class="bowl-fill" d="M17 76H143C138 113 117 125 80 126C45 125 22 108 17 76Z"/><path class="bowl-line" d="M29 91H131M56 125L53 132H108L104 125"/><g class="leaf-fill"><ellipse cx="55" cy="61" rx="6" ry="3" transform="rotate(-30 55 61)"/><ellipse cx="105" cy="63" rx="7" ry="3" transform="rotate(25 105 63)"/></g></svg></div></article><article class="dessert-card"><span class="mini-label">THE DESSERT SECTION</span><span class="closed-stamp">CLOSED</span><h3>Permanently.</h3><p>Management does not do sweets.</p><div class="cake-zone"><button id="cake-button" class="cake-button">Offer Haniya cake <span aria-hidden="true">↗</span></button></div><p id="cake-status" class="cake-status" role="status"></p></article></div>
+          <div class="meal-grid"><article class="comfort-card"><span class="mini-label">THE COMFORT MEAL</span><div class="comfort-content"><div><h3>Aloo biryani.<br><span>Non-negotiable.</span></h3><p>Some things are simply not up for discussion.</p></div><img class="biryani-art" src="images/aloo-biryani.png" alt="A steaming bowl of aloo biryani, with golden potatoes and fresh coriander" loading="lazy" decoding="async" width="387" height="420"></div></article><article class="dessert-card"><span class="mini-label">THE DESSERT SECTION</span><span class="closed-stamp">CLOSED</span><h3>Permanently.</h3><p>Management does not do sweets.</p><div class="cake-zone"><button id="cake-button" class="cake-button">Offer Haniya cake <span aria-hidden="true">↗</span></button></div><p id="cake-status" class="cake-status" role="status"></p></article></div>
         </div>
       </section>
 
@@ -181,5 +183,42 @@
       <section id="the-note" class="closing-section" aria-labelledby="closing-title"><div class="closing-flowers" aria-hidden="true"><svg><use href="#daisy"/></svg><svg><use href="#daisy"/></svg><svg><use href="#daisy"/></svg><svg><use href="#daisy"/></svg></div><div class="closing-content"><span class="mini-label">THE FINDINGS, AFTER EXTENSIVE RESEARCH</span><p class="research-concluded">Research concluded:</p><h2 id="closing-title">Haniya is <em>one of a kind.</em></h2><p class="closing-message">And if you ever feel lost, don’t worry.<br>I’ll always come find you.</p><p class="signature handwritten">— Abdullah</p><svg class="closing-daisy" aria-hidden="true"><use href="#daisy"/></svg></div></section>
     </main>
     <footer class="site-footer page-width"><span>Made with care, and a suspicious amount of research.</span><a href="https://www.instagram.com/haniyayaayayaya/" target="_blank" rel="noopener noreferrer">The main character <span aria-hidden="true">↗</span></a><a href="#" aria-label="Back to top">BACK TO TOP ↑</a></footer>
+
+    <div class="pigeon-mail" data-pigeon-mail>
+      <button class="mail-button" type="button" aria-label="Open your mail">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2.2"/><path d="M3.8 7l8.2 6.2L20.2 7"/></svg>
+        <span class="mail-badge" aria-hidden="true">1</span>
+      </button>
+      <span class="mail-tooltip" aria-hidden="true">You’ve got mail!</span>
+    </div>
+
+    <div class="mail-overlay" data-mail-overlay hidden>
+      <div class="mail-backdrop"></div>
+      <div class="mail-envelope-spot" aria-hidden="true"></div>
+      <div class="mail-carrier" aria-hidden="true">
+        <div class="mail-envelope">
+          <span class="env-back"></span>
+          <span class="env-paper"></span>
+          <span class="env-front"></span>
+          <span class="env-flap"></span>
+          <span class="env-seal"><svg viewBox="0 0 24 24"><path d="M12 20.5S3.5 15.4 3.5 9.3C3.5 6.6 5.6 4.5 8.2 4.5c1.6 0 3 .8 3.8 2.1.8-1.3 2.2-2.1 3.8-2.1 2.6 0 4.7 2.1 4.7 4.8 0 6.1-8.5 11.2-8.5 11.2z"/></svg></span>
+        </div>
+      </div>
+      <div class="mail-letter-wrap">
+        <div class="mail-letter" role="dialog" aria-modal="true" aria-label="A letter for you" tabindex="-1" hidden>
+          <button class="mail-letter-close-x" type="button" aria-label="Close the letter" data-mail-close><span aria-hidden="true">×</span></button>
+          <div class="mail-letter-body">
+            <!-- ✉️ Write the letter here. The first heading is used as the letter’s accessible name. -->
+            <h2>Dear Haniya,</h2>
+            <p>I just wanted to say thank you. Thank you for the time you give me, and for every “good morning” and “good night” in between. Since you came into my life, my days have felt full, and my heart has felt calm. We haven’t missed a single day of talking since we met, and I hope we never do.</p>
+            <p>There’s something about the way you speak to me in Urdu. I’ve said it before and I’ll say it again: it’s just so sweet. And your voice notes? They’ve become my favourite part of the day. The second I see one from you, the smile shows up on its own.</p>
+            <p>I’m grateful you’re in my life, and I pray that everything ahead of us only brings us closer, InshaAllah.</p>
+            <p class="mail-letter-signoff">Always,<span class="mail-letter-signature">Abdullah</span></p>
+            <p class="mail-letter-ps"><strong>P.S.</strong> Important update: aloo biryani is now on the website. You’re welcome.</p>
+          </div>
+          <button class="mail-letter-close" type="button" data-mail-close>Close</button>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
